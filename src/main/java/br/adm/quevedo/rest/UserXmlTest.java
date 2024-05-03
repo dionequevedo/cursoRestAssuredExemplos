@@ -1,11 +1,8 @@
 package br.adm.quevedo.rest;
 
-import groovy.util.NodeList;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static io.restassured.RestAssured.*;
 import io.restassured.internal.path.xml.NodeBase;
 import static org.hamcrest.Matchers.*;
