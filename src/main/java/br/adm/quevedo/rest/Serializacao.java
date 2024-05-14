@@ -1,2 +1,4 @@
-package br.adm.quevedo.rest;public class Serializacao {
+package br.adm.quevedo.rest;
+
+public class Serializacao {
 }
