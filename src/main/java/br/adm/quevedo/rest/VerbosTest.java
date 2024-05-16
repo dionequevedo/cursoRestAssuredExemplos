@@ -2,13 +2,14 @@ package br.adm.quevedo.rest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import io.restassured.RestAssured;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+
+import io.restassured.http.ContentType;
 
 public class VerbosTest {
 
@@ -124,6 +125,47 @@ public class VerbosTest {
                 .body(hasXPath(("/user/age"), is("47")))
                 .body(hasXPath(("/user/salary"), is("5960.56")))
         ;
+    }
+
+    //@Test
+    public void deveSalvarUsuarioXMLUsandoObjeto() {
+        User user = new User("Sheila Martins", 47, 5960.56);
+
+        given()
+                .log().all()
+                .contentType(ContentType.XML)
+                .body(user)
+        .when()
+                .post("https://restapi.wcaquino.me/usersXML")
+        .then()
+                .log().all()
+                .statusCode(201)
+                .body("user.@id", is(notNullValue()))
+                .body("user.name", is("Sheila Martins"))
+                .body("user.age", is("47"))
+                .body("user.salary", is("5960.56"))
+        ;
+    }
+
+    @Test
+    public void deveDeserializarXMLAoSalvarUsuario() {
+        User user = new User("Sheila Martins", 47, 5960.56);
+
+        User usuarioXMLInserido = given()
+                .log().all()
+                .contentType(ContentType.XML)
+                .body(user)
+        .when()
+                .post("https://restapi.wcaquino.me/usersXML")
+        .then()
+                .log().all()
+                .statusCode(201)
+                .extract().body().as(User.class);
+
+                Assert.assertThat(usuarioXMLInserido.getId(), notNullValue());
+                Assert.assertThat(usuarioXMLInserido.getName(), is("Sheila Martins"));
+                Assert.assertThat(usuarioXMLInserido.getAge(), is("47"));
+                Assert.assertThat(usuarioXMLInserido.getSalary(), is("5960.56"));
     }
 
     @Test

@@ -1,10 +1,18 @@
 package br.adm.quevedo.rest;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
+    @XmlAttribute
+    private Long id;
     private String name;
     private Integer age;
     private Double salary;
-    private Long id;
 
     @Override
     public String toString() {
@@ -23,6 +31,15 @@ public class User {
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;
+    }
+
+    public User(String name, Integer age, Double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    public User() {
     }
 
     public String getName() {

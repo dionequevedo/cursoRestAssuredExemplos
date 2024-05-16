@@ -17,7 +17,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.4.0</version>
+            <version>5.3.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -34,6 +34,30 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.4.0-b180830.0359</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/codemodel-annotation-compiler -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>codemodel-annotation-compiler</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.activation/all -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>all</artifactId>
+            <version>2.0.1</version>
+            <type>pom</type>
         </dependency>
 
     </dependencies>
